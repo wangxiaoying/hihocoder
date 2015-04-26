@@ -16,14 +16,10 @@ void getNext(string &sl, string &ss, int i, int j, vector<int> &next){
 }
 
 void countSubString(string &sl, string &ss, int i, int j, vector<int> &next, int *count){
-    if(j == ss.length()){
-        (*count)++;
-        countSubString(sl, ss, i, next[j], next, count);
-        return;
-    }
+    if(j == ss.length()) (*count)++;
     if(i == sl.length()) return;
     
-    if(-1 == j || sl[i] == ss[j])
+    if(j != ss.length() && (-1 == j || sl[i] == ss[j]))
         countSubString(sl, ss, i+1, j+1, next, count);
     else
         countSubString(sl, ss, i, next[j], next, count);
